@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://github.com/kingsoft-ai/"/>
-  <updated>2018-01-29T09:40:28.000Z</updated>
+  <updated>2018-02-01T10:15:00.000Z</updated>
   <id>https://github.com/kingsoft-ai/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Graph Transform Tool Experiment</title>
+    <link href="https://github.com/kingsoft-ai/2018/02/01/Graph_Transform_Tool/"/>
+    <id>https://github.com/kingsoft-ai/2018/02/01/Graph_Transform_Tool/</id>
+    <published>2018-02-01T07:23:53.000Z</published>
+    <updated>2018-02-01T10:15:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>##Graph Transform Tool Experiment</p><p>Recently, we’ve done an experiment about how to using graph transform tool on frozen tensorflow-model. Looking back to the past time, there are a lot of misunderstanding errors occurred during our test time.Fortunately, we solved it at the end. So we wish our experience may helping your for your job.</p><p>If you have any question about how to using tensorflow on IOS, you can click here <a href="https://kingsoft-ai.github.io/2018/01/26/Using-tensorflow-On-IOS/" target="_blank" rel="noopener">Using-TensorFlow-On-IOS</a>. By the way, you could grasp everything about <strong>Graph Transform tool</strong> here <a href="https://github.com/tensorflow/tensorflow/tree/r1.3/tensorflow/tools/graph_transforms#quantize_nodes">Git</a></p><p>####Compared tensorflow-r1.4 with tensorflow-r1.5 version</p><p>At the very beginning, we consider whether the tensorflow version affecting the speed of transformed model on ios or not. Aim at verifying this improbability，we build this two versions on our Mac-mini.<br>Then, a series of experiments began to work. <strong>Note that when you start up your own deep-learning project on ios, you must keep your python environment installed tensorflow version and your built on ios tensorflow version of the same</strong>.</p><p>####Experiment results about Part of those transform reference </p><p>After browsing both of these transform reference, we selected some important parameters    for test. Since we need to enhance mobel cpu processing speed, the step of optimizing is indispensable.    According to the official document, <strong>This recipe removes all of the nodes that aren’t called during inference, shrinks expressions that are always constant into single nodes, and optimizes away some multiply operations used during batch normalization by pre-multiplying the weights for convolutions</strong>. When added these parameters for optimizing, your mobel cpu can run as fast as possible. At last, the official document introduce some parameters for shrinking the model size. Concretely, after our test, the model size can compressed which almost 70% smaller than the original model.</p><p>bachmark are as follow:</p><table><thead><tr><th style="text-align:center">frozen</th><th style="text-align:center">add_default_attributes</th><th style="text-align:center">fold_batch_norms</th><th style="text-align:center">fold_constants</th><th style="text-align:center">fold_old_batch_norms</th><th style="text-align:center">quantize_weights</th><th style="text-align:center">sort_by_execution_order</th><th style="text-align:center">strip_unused_nodes</th><th style="text-align:center">remove_nodes</th><th style="text-align:center">tensorflow-r1.4(fps)</th><th style="text-align:center">tensorflow-r1.5(fps)</th></tr></thead><tbody><tr><td style="text-align:center">Yes</td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center">9</td><td style="text-align:center">9</td></tr><tr><td style="text-align:center">Yes</td><td style="text-align:center">Yes</td><td style="text-align:center">Yes</td><td style="text-align:center">Yes</td><td style="text-align:center">Yes</td><td style="text-align:center"></td><td style="text-align:center"></td><td style="text-align:center">Yes</td><td style="text-align:center">Yes</td><td style="text-align:center">11</td><td style="text-align:center">10~11</td></tr><tr><td style="text-align:center">Yes</td><td style="text-align:center">Yes</td><td style="text-align:center">Yes</td><td style="text-align:center">Yes</td><td style="text-align:center">Yes</td><td style="text-align:center">Yes</td><td style="text-align:center"></td><td style="text-align:center">Yes</td><td style="text-align:center"></td><td style="text-align:center">11</td><td style="text-align:center">10~11</td></tr></tbody></table>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;##Graph Transform Tool Experiment&lt;/p&gt;
+&lt;p&gt;Recently, we’ve done an experiment about how to using graph transform tool on frozen tensorflow-
+      
+    
+    </summary>
+    
+      <category term="machine learning" scheme="https://github.com/kingsoft-ai/categories/machine-learning/"/>
+    
+      <category term="tensorflow" scheme="https://github.com/kingsoft-ai/categories/machine-learning/tensorflow/"/>
+    
+    
+      <category term="tensorflow" scheme="https://github.com/kingsoft-ai/tags/tensorflow/"/>
+    
+      <category term="machine learning" scheme="https://github.com/kingsoft-ai/tags/machine-learning/"/>
+    
+      <category term="ios" scheme="https://github.com/kingsoft-ai/tags/ios/"/>
+    
+  </entry>
   
   <entry>
     <title>Using TensorFlow On IOS</title>
